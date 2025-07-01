@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: izeinddi <izeinddi@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/28 12:11:44 by izeinddi          #+#    #+#             */
-/*   Updated: 2025/07/01 13:22:09 by izeinddi         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef PHILO_H
 # define PHILO_H
 
@@ -53,49 +41,27 @@ typedef struct s_data
 	t_philo			*philos;
 }	t_data;
 
-/* main.c */
 int			main(int argc, char **argv);
-
-/* args.c */
 int			check_args(int argc, char **argv);
-
-/* cleanup.c */
 void		cleanup_data(t_data *data);
-
-/* thread_management.c */
 int			start_simulation(t_data *data);
-
-/* thread_utils.c */
 int			create_threads(t_data *data, pthread_t *monitor_thread);
 int			join_threads(t_data *data, pthread_t monitor_thread);
-
-/* init.c */
 int			init_data(t_data *data, int argc, char **argv);
 int			init_forks(t_data *data);
 int			init_philos(t_data *data);
-
-/* utils.c */
 long long	get_time(void);
 int			ft_usleep(long long milliseconds);
 void		print_message(char *str, t_philo *philo, int id);
-
-/* routine.c */
 void		*philo_routine(void *philosopher);
 void		*monitor_routine(void *data_ptr);
-
-/* monitor.c */
 int			check_if_all_ate(t_data *data);
 int			is_simulation_stopped(t_data *data);
-
-/* monitor_utils.c */
 int			philosopher_dead(t_philo *philo, long long time_to_die);
 int			check_if_dead(t_data *data);
-
-/* actions.c */
 void		take_forks(t_philo *philo);
 void		eat(t_philo *philo);
 void		sleep_and_think(t_philo *philo);
-
 int static_atoi(const char *str);
 
 #endif 
